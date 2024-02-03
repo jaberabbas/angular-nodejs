@@ -5,3 +5,30 @@
 
 <div *ngFor="let item of items">{{item}}</div>
 <div>{{jsonContent}}</div>
+<table class="table table-hover" border="1">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>FECHA INICIO</th>
+			<th>FECHA FIN</th>
+			<th>ESTADO</th>
+			<th>Nro CARNET</th>
+			<th>FECHA CADUCIDAD</th>
+			<th>FECHA EMISION</th>
+			<th>IDCURSO</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let curso_conductor of (curso_conductores$ | async) as curso_conductores">
+			<td>{{curso_conductor.ID_CURSO_CONDUCTOR}}</td>
+			<td>{{curso_conductor.F_INICIO}}</td>
+			<td>{{curso_conductor.F_FIN}}</td>
+			<td>{{curso_conductor.ESTADO}}</td>
+			<td>{{curso_conductor.CARNET_C}}</td>
+			<td>{{curso_conductor.F_CADUCIDAD}}</td>
+			<td>{{curso_conductor.F_EMISION}}</td>
+			<td>{{curso_conductor.ID_CURSO}}</td>
+			<td>{{curso_conductor.ID_PERSONA}}</td>
+		</tr>
+	</tbody>
+</table>
