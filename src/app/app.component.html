@@ -3,8 +3,86 @@
 
 </p>
 
-<div *ngFor="let item of items">{{item}}</div>
-<div>{{jsonContent}}</div>
+<p>SBX SAP Entities:</p>
+
+<table class="table table-hover" border="1">
+	<thead>
+		<tr>
+			<th>EntityId</th>
+			<th>OriginEntityId</th>
+			<th>Name</th>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Prefix</th>
+			<th>Suffix</th>
+			<th>NameSource</th>
+			<th>GovDesignation</th>
+			<th>EntryType</th>
+			<th>EntryCategory</th>
+			<th>EntrySubCategory</th>
+			<th>Organization</th>
+			<th>Positions</th>
+			<th>Remarks</th>
+			<th>DateOfBirth</th>
+			<th>PlaceOfBirth</th>
+			<th>CountryLabel</th>
+			<th>Country</th>
+			<th>ExpirationDate</th>
+			<th>EffectiveDate</th>
+			<th>PictureFile</th>
+			<th>LinkedTo</th>
+			<th>RelatedID</th>
+			<th>TouchDate</th>
+			<th>PassportID</th>
+			<th>NationalID</th>
+			<th>OtherID</th>
+			<th>DateOfBirth2</th>
+			<th>EntityLevel</th>
+			<th>Watch</th>
+			<th>Relationships</th>
+			<th>PrimaryName</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let sbxEntity of (sbxEntities$ | async) as sbxs">
+			<td>{{sbxEntity.EntityId}}</td>
+			<td>{{sbxEntity.OriginEntityId}}</td>
+			<td>{{sbxEntity.Name}}</td>
+			<td>{{sbxEntity.FirstName}}</td>
+			<td>{{sbxEntity.LastName}}</td>
+			<td>{{sbxEntity.Prefix}}</td>
+			<td>{{sbxEntity.Suffix}}</td>
+			<td>{{sbxEntity.NameSource}}</td>
+			<td>{{sbxEntity.GovDesignation}}</td>
+			<td>{{sbxEntity.EntryType}}</td>
+			<td>{{sbxEntity.EntryCategory}}</td>
+			<td>{{sbxEntity.EntrySubCategory}}</td>
+			<td>{{sbxEntity.Organization}}</td>
+			<td>{{sbxEntity.Positions}}</td>
+			<td>{{sbxEntity.Remarks}}</td>
+			<td>{{sbxEntity.DateOfBirth}}</td>
+			<td>{{sbxEntity.PlaceOfBirth}}</td>
+			<td>{{sbxEntity.CountryLabel}}</td>
+			<td>{{sbxEntity.Country}}</td>
+			<td>{{sbxEntity.ExpirationDate}}</td>
+			<td>{{sbxEntity.EffectiveDate}}</td>
+			<td>{{sbxEntity.PictureFile}}</td>
+			<td>{{sbxEntity.LinkedTo}}</td>
+			<td>{{sbxEntity.RelatedID}}</td>
+			<td>{{sbxEntity.TouchDate}}</td>
+			<td>{{sbxEntity.PassportID}}</td>
+			<td>{{sbxEntity.NationalID}}</td>
+			<td>{{sbxEntity.OtherID}}</td>
+			<td>{{sbxEntity.DateOfBirth2}}</td>
+			<td>{{sbxEntity.EntityLevel}}</td>
+			<td>{{sbxEntity.Watch}}</td>
+			<td>{{sbxEntity.Relationships}}</td>
+			<td>{{sbxEntity.PrimaryName}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Curso conductor:</p>
 <table class="table table-hover" border="1">
 	<thead>
 		<tr>
@@ -32,3 +110,10 @@
 		</tr>
 	</tbody>
 </table>
+
+<p>Rest API call</p>
+<div *ngFor="let item of items">{{item}}</div>
+<div>{{jsonContent}}</div>
+
+<p>Key Value Service response:</p>
+<div>{{keyValue$}}</div>

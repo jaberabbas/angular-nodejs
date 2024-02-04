@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Curso_Conductor, ApiResponse } from "./models/conductor.model";
 import { map } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { DataService } from "./data.service";
+import { Curso_Conductor, ApiResponse } from "./models/conductor.model";
+import { KeyValueService } from './keyvalue.service';
+import { KeyValueResponse } from './models/keyvalue.model';
+import { SbxService } from './sbx.service';
+import { SbxResponse, Entity } from './models/sbx.model';
+
 
 @Component({
   selector: 'app-root',
@@ -12,21 +17,39 @@ import { DataService } from "./data.service";
 })
 export class AppComponent {
   url = `http://echo.jsontest.com/key/value/one/two`;
-  jsonPath = "./assets/test.json";
+  jsonPath = "./assets/keyvalue.json";
   items: any[] = [];
   jsonContent: any;
   curso_conductores$: Observable<Array<Curso_Conductor>> | undefined;
+  keyValue$: Observable<String> | undefined;
+  sbxEntities$: Observable<Array<Entity>> | undefined 
 
-  constructor(private http: HttpClient, private service: DataService) {
+  constructor(private http: HttpClient, private dataService: DataService, private keyValueService : KeyValueService, private sbxService : SbxService) {
   }
 
   ngOnInit() {
-
     this.httpClientCallJsonTest();
     this.httpClientCallCurso();
+    this.httpClientCallKeyValue();
+    this.httpClientCallSbxEntites();
+  }
+
+  private httpClientCallSbxEntites(): void {
+    this.sbxEntities$ = this.sbxService.getSbxEntities()
+      .pipe(
+        map((sbxResponse: SbxResponse) => sbxResponse.value)
+      );
+  }
+  private httpClientCallKeyValue(): void{
+    this.keyValue$ = this.keyValueService.getKeyValue()
+    .pipe(
+      map((kvResponse: KeyValueResponse) => kvResponse.one)
+    );
+    console.log("keyValue: " + this.keyValue$);
+    console.log("kv: " + this.keyValueService.getKeyValue().pipe(map((kvResponse: KeyValueResponse) => kvResponse)));
   }
   private httpClientCallCurso(): void {
-    this.curso_conductores$ = this.service.getCursoConductor()
+    this.curso_conductores$ = this.dataService.getCursoConductor()
       .pipe(
         map((apiResponse: ApiResponse) => apiResponse.dato)
       );

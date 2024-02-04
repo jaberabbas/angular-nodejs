@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
+import { KeyValueService } from './keyvalue.service';
+import { SbxService } from './sbx.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,7 @@ import { DataService } from './data.service';
     BrowserModule,
     HttpClientModule,
   ],
-  providers: [DataService],
+  providers: [DataService, KeyValueService, SbxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
