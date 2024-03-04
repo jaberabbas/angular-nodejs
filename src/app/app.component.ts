@@ -1,13 +1,38 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {Item} from './item';
+
+import {ItemDetailComponent} from './item-detail/item-detail.component';
+import {ClickDirective} from './click.directive';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.css'],
+  imports: [ItemDetailComponent, ClickDirective],
 })
 export class AppComponent {
-  title = 'event-binding';
+  currentItem = {name: 'teapot'};
+  clickMessage = '';
+
+  onSave(event?: MouseEvent) {
+    const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
+    alert('Saved.' + evtMsg);
+    if (event) {
+      event.stopPropagation();
+    }
+  }
+
+  deleteItem(item: Item) {
+    alert(`Delete the ${item.name}.`);
+  }
+
+  onClickMe(event?: MouseEvent) {
+    const evtMsg = event ? ' Event target class is ' + (event.target as HTMLElement).className : '';
+    alert('Click me.' + evtMsg);
+  }
+
+  getValue(event: Event): string {
+    return (event.target as HTMLInputElement).value;
+  }
 }
