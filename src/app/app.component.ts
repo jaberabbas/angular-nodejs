@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {SizerComponent} from './sizer/sizer.component';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.css'],
+  imports: [FormsModule, SizerComponent],
 })
 export class AppComponent {
-  title = 'two-way-binding';
+  fontSizePx = 16;
 }
