@@ -1,13 +1,37 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+
+import {heroSwitchComponents} from './hero-switch.components';
+import {HeroComponent} from './hero.component';
+import {UnlessDirective} from './unless.directive';
+import {TrigonometryDirective} from './trigonometry.directive';
+
+import {Hero, heroes} from './hero';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.css'],
+  imports: [
+    CommonModule,
+    FormsModule,
+    heroSwitchComponents,
+    HeroComponent,
+    UnlessDirective,
+    TrigonometryDirective,
+  ],
 })
 export class AppComponent {
-  title = 'structural-directives';
+  heroes = heroes;
+  hero: Hero | null = this.heroes[0];
+  condition = false;
+  logs: string[] = [];
+  showSad = true;
+  status = 'ready';
+
+  trackById(index: number, hero: Hero): number {
+    return hero.id;
+  }
 }
