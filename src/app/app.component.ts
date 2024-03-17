@@ -1,13 +1,39 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { ConfigComponent } from './config/config.component';
+import { DownloaderComponent } from './downloader/downloader.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { MessagesComponent } from './messages/messages.component';
+import { PackageSearchComponent } from './package-search/package-search.component';
+import { UploaderComponent } from './uploader/uploader.component';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [
+    CommonModule,
+
+    ConfigComponent,
+    DownloaderComponent,
+    HeroesComponent,
+    MessagesComponent,
+    PackageSearchComponent,
+    UploaderComponent
+  ],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'http';
+  showHeroes = true;
+  showConfig = true;
+  showDownloader = true;
+  showUploader = true;
+  showSearch = true;
+
+  toggleHeroes() { this.showHeroes = !this.showHeroes; }
+  toggleConfig() { this.showConfig = !this.showConfig; }
+  toggleDownloader() { this.showDownloader = !this.showDownloader; }
+  toggleUploader() { this.showUploader = !this.showUploader; }
+  toggleSearch() { this.showSearch = !this.showSearch; }
 }
