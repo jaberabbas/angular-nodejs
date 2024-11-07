@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "animations": {
+    "delete-me": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/animations",
+            "outputPath": "dist/delete-me",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "animations:build:production"
+              "buildTarget": "delete-me:build:production"
             },
             "development": {
-              "buildTarget": "animations:build:development"
+              "buildTarget": "delete-me:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "animations:build"
+            "buildTarget": "delete-me:build"
           }
         },
         "test": {
@@ -91,5 +91,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "cde688e9-0ebc-40f1-8f90-2f861b966afa"
   }
 }
